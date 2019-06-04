@@ -1,0 +1,16 @@
+{
+  "name": "entregados",
+  "version": "1.0.0",
+  "description": "Segunda entrega, manejo express y archivos",
+  "main": "app.js",
+  "dependencies": {
+    "hbs": "^4.0.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johana C",
+  "license": "ISC"
+}

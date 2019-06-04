@@ -1,0 +1,46 @@
+{{>header}}
+
+<h1>Inscribir Curso</h1>
+
+{{#if cursos}}
+
+	<form action="/inscribirCurso" method="post">
+		<div>
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" name="nombre" required />
+		</div>
+		<div>
+			<label for="id">Documento de identidad</label>
+			<input type="number" id="id" name="id" required />
+		</div>
+		<div>
+			<label for="correo">Correo</label>
+			<input type="email" id="correo" name="correo" required />
+		</div>
+		<div>
+			<label for="telefono">Teléfono</label>
+			<input type="number" id="telefono" name="telefono" required />
+		</div>
+		<div>
+			<label for="modalidad">Cursos disponibles</label> 
+			<select id="curso" name="curso" required>
+				{{#each cursos}}
+					<option value="{{this.id}}">{{this.nombre}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="button">
+			<button type="submit">Inscribir</button>
+		</div>
+	</form>
+
+
+{{else}}
+	
+	<p>No hay cursos para inscribir</p>
+
+{{/if}}
+
+
+
+{{>footer}}

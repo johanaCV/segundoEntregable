@@ -1,0 +1,55 @@
+{{>header}}
+
+<h1>Ver inscritos por curso</h1>
+
+{{#if lista}}
+
+<div class="bs-example">
+    <div class="accordion" id="accordionExample">
+		{{#each lista}}
+			<div class="card">
+				<div class="card-header" id="heading{{this.id}}">
+					<h2 class="mb-0">
+						<button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse{{this.id}}">{{this.nombre}}<br>Estado: {{this.estado}}</button>
+						<form action="/cambiarEstadoCurso" method="post">
+							<input id="idCurso" name="idCurso" type="hidden" value="{{this.id}}" />
+							<button type="submit" class="btn btn-danger" style="margin-left:2%">Cerrar curso</button>
+						</form>
+					</h2>
+				</div>
+				<div id="collapse{{this.id}}" class="collapse" aria-labelledby="heading{{this.id}}" data-parent="#accordionExample">
+					<div class="card-body">
+						
+						
+						<table>
+						
+						{{#each this.estudiantes}}
+							<tr>
+								<td>Estudiante: {{this.nombre}}</td>
+								<td>
+									<form action="/eliminarAspirante" method="post">
+										<input id="idEst" name="idEst" type="hidden" value="{{this.id}}" />
+										<input id="idCur" name="idCur" type="hidden" value="{{../this.id}}" />
+										<button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+									</form>
+								</td>
+							</tr>
+						{{/each}}
+						
+						</table>
+						
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</div>
+
+{{else}}
+
+<p>No hay cursos disponibles</p>
+ 
+{{/if}}
+
+
+{{>footer}}
